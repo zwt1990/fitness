@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>课程详情</title>
+	<link href="static/css/base.min.css" rel="stylesheet" />
+	<link href="static/css/ionic.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="static/css/modify.css">
+	<link href="static/css/scrollbar.css" rel="stylesheet" type="text/css" />
+    <style>
+        .cq_btn{width:100px; border: 0 none; background-color: #FE6714;display: block; text-align: center;line-height: 40px;font-size: 18px; position:absolute; z-index:2; color:#fff; top:30px; right:8%;}
+        .cq_btned{width:100px;position:absolute; z-index:2; color:#fff; top:50px; right:8%; border: 0 none; border-radius: 5px; background-color: #989898;display: block; text-align: center;line-height: 35px;font-size: 16px;}
+        .point{font-size: 0.5em;color:#ccc;}
+        .rules_content {
+            position: absolute;
+            width:100%;
+            height:1000px;
+            background: #fff;
+            top: -1600px;
+            padding: 2%;
+            color: #989898;
+            z-index: 9999;
+        }
+        .rules_content h2 {
+            text-align:center;
+            font-size:16px;
+        }
+        .rules_content h1 {
+            font-size:14px;
+            line-height:50px;
+        }
+        .rules_content p {
+            text-indent: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .rules_content .rules_close {
+            background: #ccc;
+            color: #fff;
+            width: 70%;
+            margin-left: 12%;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .rules_content .go_and_buy {
+            background: #e25050;
+            color: #fff;
+            width: 70%;
+            margin-left: 12%;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .rules_content .rule_img {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body class="schedule_detail">
+<div class="adv-top" style="margin-top: 0">
+    <img class="adv-img" src="static/img/course4.png" />
+</div>
+<div class="courseDetail-wrapper">
+    <div class="course-intro" style="margin-top:-5px;">
+        <div class="intro-item">
+            <span><img src="static/img/4index.png">上课时间：</span>
+            <span style="color:#e25050;">2016.07.24 21:25-22:10</span>
+        </div>
+        <div class="intro-item">
+            <span><img src="static/img/4coach.png">任课教练：</span>
+            Christal        </div>
+        <div class="intro-item">
+            <span><img src="static/img/4Classroom.png">教&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp室：</span>
+            维多利亚教室        </div>
+         <a class="J_order cq_btn" style="background:#e25050;" href="javascript:void(0);">立即预约</a>        <div class="intro-item degree">
+            <span><img src="static/img/4index.png">虐练指数：</span>
+            <i class="icon-w30 star"></i><i class="icon-w30 star"></i><i class="icon-w30 star"></i>        </div>
+    </div>
+    <div class="course-intro">
+        <div class="intro-item detail"><img src="static/img/4introduces.png"> 课程简介——瘦身搏击</div>
+        <div class="desc">你会通过拳击、踢腿动作进行锻炼，全程可以燃烧高达740卡路里*的热量。此项课程受武术动作启发，是完全非接触性、 简单易学的大运动量训练课程。激发你持续挑战，每次训练都竭尽全力。在锻炼中，你会释放自我、心情舒畅、感觉像冠军一样，能锻炼到腿部、塑造手臂、背部和肩膀，对核心有显著的锻炼效果。你能消耗卡路里、提高协调性、敏捷性和速度，感觉自己充满力量。</div>
+    </div>
+    <div class="course-intro course-intro2" style="margin-top:10px;">
+        <div class="intro-item sccomment_tit"><img src="/public_source/wap/leke-app/img/modify/4Member evaluation.png">会员评价：</div>
+        <div class="evaluate-list"></div>
+        <div class="loading" id="pullUp">
+            <span class="pullUpIcon"></span><span class="pullUpLabel">加载中...</span>
+        </div>
+    </div>
+</div><!-- .courseDetail-wrapper END -->
+<div class="rules_content">
+    <img class="rule_img" src="http://7xq7nd.com2.z0.glb.qiniucdn.com/o_1amffsdt6rri1mbkv4ocb4hujc.jpg" alt="shouhuan">
+    <div class="go_and_buy">去抢购</div>
+    <div class="rules_close">关闭</div>
+</div>
+
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/global.js"></script>
+<!--<script src="/public_source/wap/js/course-detail.js"></script>-->
+
+<script>
+    var page_num = 1;
+    var can_process = true;
+    var redirect_url = '/wap/user/my_order_course';
+    $(function(){
+
+        // 弹窗
+        $('.rules_close').on('click',function(){
+            window.location.href = redirect_url;
+
+        });
+        $('.rules_check').on('click',function(){
+            $('.rules_content').animate({top:'0px'},500);
+        });
+        $('.go_and_buy').on('click', function(){
+            window.location.href = '/wap/unify_pay/member_card_pay';
+        });
+
+        /**
+         * 预约
+         */
+        $(".J_order").off().on("click", function(){
+            var jThis = $(this),
+                jItem = jThis.parents(".course-item")
+                ;
+            if(jThis.is(".forbid")){
+                return;
+            }
+            jThis.attr('disabled',true);
+
+               $('#popup_head').text('恭喜预约成功');
+               var word ='预约成功';
+               alert(word);
+               redirect_url = '/wap/user/my_order_course';
+                location.href = redirect_url;
+            
+            
+            
+/*             $.ajax({
+                url: "/wap/appoint/appoint",
+                data: {schedule_id: 22632, camp_class_user_node_id: 0},
+                type: "get",
+                dataType: "json",
+                success: function(oData){
+                    var fnCallBack = null;
+                    if(oData.location){
+                        fnCallBack = function(){
+                            location.href = oData.location;
+                        };
+                    }
+                    if(oData.status){
+                        $('#popup_head').text('恭喜预约成功');
+                        var word = oData.data ? oData.data : '预约成功';
+                        alert(word);
+                        redirect_url = '/wap/user/my_order_course';
+                        location.href = redirect_url;
+                    } else{
+                        jThis.attr('disabled',false);
+                        new Say(oData.data, fnCallBack);
+                    }
+                }
+            }); */
+        });
+
+        /**
+         * 排队
+         */
+        $(".J_queuing").off().on("click", function(){
+
+            var jThis = $(this),
+                jItem = jThis.parents(".course-item")
+                ;
+            if(jThis.is(".forbid")){
+                return;
+            }
+            $.ajax({
+                url: "/wap/queue/queue",    //这个地址要改成排队的地址
+                data: {schedule_id: 22632, camp_class_user_node_id: 0},
+                type: "get",
+                dataType: "json",
+                success: function(oData){
+
+                    var fnCallBack = null;
+                    if(oData.location){
+                        fnCallBack = function(){
+                            location.href = oData.location;
+                        };
+                    }
+                    if(oData.status){
+
+                        /*var msg =
+                            '恭喜你，排队成功!\n' +
+                            '若有用户取消预约，我们会按排队的先后顺序安排上课。\n' +
+                            '若成功排上，将在公众号中第一时间通知你。';
+
+                        new Say(msg, function(){
+
+                            jThis.css("background-color","#989898");
+                            jThis.html("已排队").addClass('forbid');
+                        });*/
+
+                        $('#popup_head').text('恭喜排队成功');
+                        var word = oData.data ? oData.data : '排队成功';
+                        alert(word);
+                        redirect_url = '/wap/user/order_course';
+                        location.href = redirect_url;
+
+                        //$('.rules_content').animate({top:'0px'},500);
+                    } else{
+                        new Say(oData.data, fnCallBack);
+                    }
+                }
+            });
+        });
+
+    });
+
+    $(document).ready(function(){
+        //载入评论函数
+        function load_comment(){
+            can_process = false;
+            $('#pullUp').show();
+
+            setTimeout(function () {
+                $.ajax({
+                    url: "/wap/comment/get_comment_list",
+                    data: {
+                        class_id: 141,
+                        coach_name:'Christal',
+                        limit: 5,
+                        offset: (page_num - 1) * 5
+                    },
+                    type: "get",
+                    dataType: "json",
+                    success: function(res){
+                        var comments = res.data;
+                        var my_feeling = [
+                            '已瘫倒!',
+                            '累成狗!',
+                            '有点累!',
+                            '顶得住!',
+                            '很轻松!'
+                        ];
+                        if(res._count){
+                            var comment_str = '';
+                            $(comments).each(function(index,comment){
+                                var start_num = 5;
+                                start_num = (parseInt(comment.coach_num) + parseInt(comment.coach_num))/2;
+                                var start_string = '';
+                                for(var i = 0; i < start_num; i++){
+                                    start_string += '<i class="icon-w30 star"></i>';
+                                }
+                                var my_feeling_num = (parseInt(comment.body_num) + 1);
+                                comment_str =
+                                    '<div class="evaluate-item"><div class="user-name ks-clear"> <div class="intro-item degree pL-"> <div class="" style="color:#202020;display:inline-block;">'
+                                    + comment.user_name + '</div>'  + '<span style="color:#202020;float:right;margin-right:20px;font-size:16px;">' + comment.start_time + '</span> </div> <div class="feelingface"> <p style="height:20px;" class="degree">'+ start_string+' <label style="color:#202020;float:right;margin-right:20px;font-size:14px;">教练：'
+                                    + comment.coach_name + '</label></p><p>虐练感受：<span class="feel'
+                                    + my_feeling_num +'"></span>'
+                                    + my_feeling[my_feeling_num-1] + ' </p> </div> </div> <div class="scdet_comment" style="font-size:14px;">'
+                                    + comment.says + '</div> </div>' + comment_str;
+                            });
+                            $(".evaluate-list").append(comment_str);
+                            page_num++;
+                            can_process = true;
+                        };
+                        $('#pullUp').hide();
+                    }
+                });
+            }, 500);
+
+        }
+
+        //载入第一次评论
+        load_comment();
+
+        $(window).on('scroll', function(){
+            if(can_process){
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if(scrollTop + windowHeight + 45 >= scrollHeight){
+                    load_comment();
+                }
+            }
+        });
+    })
+</script>
+</body>
+</html>

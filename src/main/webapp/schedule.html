@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>一周课程</title>
+<link href="static/css/base.min.css" rel="stylesheet" />
+<link href="static/css/ionic.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="static/css/modify.css">
+<link href="static/css/scrollbar.css" rel="stylesheet" type="text/css" />
+<script type="text/template" id="week-temp">
+	<%_.each(obj, function(item, index) { %>
+		<a class="<%= index == 0 ? " day-item ce75" : " day-item"%>" href="javascript:void(0);" data-id="<%=item.dateStr%>">
+				<div class="week wyp"><%=item.weekChinese%></div>
+				<div class="day wyp"><%=item.shortDateStr%></div>
+			</a> 
+	<%})%>
+    </script>
+  <script type="text/template" id="week-temp">
+	<%_.each(obj, function(item, index) { %>
+		<a class="<%= index == 0 ? " day-item ce75" : " day-item"%>" href="javascript:void(0);" data-id="<%=item.dateStr%>">
+				<div class="week wyp"><%=item.weekChinese%></div>
+				<div class="day wyp"><%=item.shortDateStr%></div>
+			</a> 
+	<%})%>
+    </script>  
+    <script type="text/template" id="course-temp" >
+	<%_.each(obj, function(item, index) { %>
+    <div class="course-item" data-id="<%=item.id%>" >
+    <div class="course-image-block"><a href=""><img src="<%=item.img%>" /></a></div>
+    <span class="courseType courseType2"><a class="white" style="color:#2d2d2d" href=""><%=item.name%></a></span>
+    <span class="spaninline" style="block"><a class="white" style="color:#2d2d2d;font-size:14px;" >教练:<%=item.coacheName%></a></span></span>
+    <span class="time"><a class="" style="color:#e25050" ><%=item.startTime%>-<%=item.endTime%></a>
+	<span class="oprate"><a class="J_order ce25050" >预约</a></span>
+	</div>
+    <%})%>
+    </script>
+    
+<style type="text/css">
+div .courec_wp {
+	font-size: 18px;
+}
+
+.course-item {
+	padding: 10px 0;
+	line-height: 22px !important;
+}
+</style>
+</head>
+<body class="weekschedule" style="background: #eee;">
+	<div id="header" class="headerEx"></div>
+	<!-- #header END -->
+	<div class="courseList-wrapper weekCourse-wrapper">
+		<input type="hidden" id="show_cross_fit" value="0" /> <input
+			type="hidden" id="camp_class_user_node_id" value="0" /> <input
+			type="hidden" id="schedule_ids" value='' />
+		<div class="search-enginue">
+			<div class="search-item" style="float: left">
+				<span class="branch-bar" style="min-width: 85px;"> <select
+					class="branch-slt" id="city_id"
+					style="font-size: 15px !important; line-height: 32px;">
+						<option value="10544">上海市</option>
+						<option value="2">北京市</option>
+						<option value="12597" selected>杭州市</option>
+				</select>
+				</span>
+			</div>
+			<div class="search-enginue-l" onclick="openDiv();"></div>
+			<div class="search-item" style="float: left">
+				<span class="branch-bar barcity"
+					style="max-width: -webkit-calc(100% - 10px); max-width: calc(100% - 10px);">
+					<select class="branch-slt wyp" id="J_branch"
+					style="padding: 0; margin-left: -10px;"></select> <em
+					style="font-style: normal; font-size: 14px; line-height: 52px; color: #fff; position: absolute; right: 28px;"
+					class="distance"></em>
+				</span>
+			</div>
+		</div>
+		<!-- .search-bar END -->
+		<div class="calendar-enginue" style="margin-bottom: 0;">
+			<!-- 这里用data-id记录对应的日期，用于搜索，至于下面的日期，你们程序来加载吧 -->
+		</div>
+		<!-- .calendar-enginue END -->
+		<div id="J_wrapper">
+			<div class="course-list">
+				<div id="pullUp" class="loading">
+					<span class="pullUpIcon"></span><span class="pullUpLabel">加载中...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .weekCourse-wrapper END -->
+	<!--弹出地图 start-->
+	<div class="open_map">
+		<div id="allmap" class="contmap"></div>
+	</div>
+	<div class="screen" onclick="closeScreen()"></div>
+	<!--弹出地图 end-->
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/global.js"></script>
+	<script src="static/js/iscroll.js"></script>
+	<script src="static/js/underscore.js"></script>>
+	<script type="text/javascript"
+		src="http://api.map.baidu.com/api?v=2.0&ak=D1c84e7ced620bb2e3651144955ccce3"></script>
+	<script type="text/javascript">
+    </script>
+	<script src="static/js/week-course.js"></script>
+	<script>
+	function openDiv(){
+		$('.open_map').animate({'top':'0'},500);
+		$('.screen').show(500);
+	}
+	function closeScreen(){
+		$('.open_map').animate({'top':'-350px'},500);	
+		$('.screen').fadeOut(500);	
+	}
+    </script>
+</body>
+</html>
